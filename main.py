@@ -1,49 +1,43 @@
 import random
 
+def SumaDeDados(Dado1, Dado2, Dado3):
+    SumaDeDados = Dado1 + Dado2 + Dado3
+    return SumaDeDados
+
+
 def TirarDados():
-    SumaTotal = 42
-    while (SumaTotal >= 42):
-        Dado1 = random.randrange(10)
-        Dado2 = random.randrange(10)
-        Dado3 = random.randrange(10)
-        print("🎲🎲 Dados 🎲🎲")
-        print(f"➡️Dado1: {Dado1}, Dado2: {Dado2}, Dado3: {Dado3}  ⬅️")
-        SumarDados = Dado1+Dado2+Dado3
-        print(f"1️⃣Primera suma de dados: {SumarDados}")
-        x = [int(a) for a in str(SumarDados)]
-        print(f"2️⃣Segunda suma de dados: {x}")
-        SumaTotal = sum(x)
-        print(f"#️⃣Suma Final: {SumaTotal}")
-        return SumaTotal
-    print("fin")
+    Dado1 = random.randrange(10)
+    Dado2 = random.randrange(10)
+    Dado3 = random.randrange(10)
+    print("🎲🎲 Dados 🎲🎲")
+    print(f"➡️Dado1: {Dado1}, Dado2: {Dado2}, Dado3: {Dado3}  ⬅️")
+    print(f"1️⃣Primera suma de dados: {SumaDeDados(Dado1, Dado2, Dado3)}")
+    Suma = SumaDeDados(Dado1, Dado2, Dado3)
+    x = [int(a) for a in str(Suma)]
+    print(f"2️⃣Segunda suma de dados: {x}")
+    SumaTotal = sum(x)
+    print(f"#️⃣Suma Final: {SumaTotal}")
+    return SumaTotal
+
+def partida():
+    CasillaJugador = 0
+    while(CasillaJugador <= 42 and CasillaJugador != 33):
+        input("Volver a tirar")
+        SumaTotal = TirarDados()
+        CasillaJugador = CasillaJugador + SumaTotal
+        CasillaJugador2 = 31
+        resta = CasillaJugador - SumaTotal
+
+        if SumaTotal <= 4:
+            print(f"Avanzas a la casilla: {CasillaJugador}")
+        else:
+            print(f"No avanza casillas: {CasillaJugador}")
+
+        if CasillaJugador2 == 31:
+            print(resta)
 
 
-ResultadoDados = TirarDados()
 
-def GuarderDados():
-    DadosGuardados = ResultadoDados
-    return DadosGuardados
-
-
-def ComprobarDados():
-    if ResultadoDados <= 4:
-        print("Avanzas casilla")
-    else:
-        print("Te quedas en la misma casilla")
-print(ComprobarDados())
-
-''''
-def MoverseEnTablero():
-    LugarTablero = 0
-    while(ResultadoDados <= 4):
-        MoverFicha = LugarTablero + ResultadoDados
-        print(MoverFicha)
-        return MoverFicha
-print(MoverseEnTablero())
-'''''
-CasillaMaxima = 42
-def iniciojuego():
-    while (ResultadoDados >= CasillaMaxima):
-        print(TirarDados())
+partida()
 
 
